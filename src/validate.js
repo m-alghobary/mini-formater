@@ -21,17 +21,6 @@ function checkFormat(dateFormat) {
  * @returns {Boolean} true if the separator is supported, false otherways
  */
 function checkSeparator(dateFormat) {
-    // onlay one separator should be used
-}
-
-
-/**
- * get the first appeared separator as the used separator
- * @param {String} dateFormat the user date format
- * 
- * @returns {String} the used separator
- */
-function getUsedSeparator(dateFormat) {
 
     // get the index of the first appeared separator in the dateFormat string
     let _separatorIndex = dateFormat.length;
@@ -42,10 +31,18 @@ function getUsedSeparator(dateFormat) {
         }
     }
 
+    // unknown separator
     const _usedSeparator = dateFormat.charAt(_separatorIndex);
-    return _usedSeparator.length === 0 ? undefined : _usedSeparator;
+    if (_usedSeparator.length === 0) {
+        throw new Error('Unknown separator');
+    }
+
+    // onlay one separator should be used
+    if (dateFormat.split(_usedSeparator).length !== 3) {
+        throw new Error('Onlay use one separator');
+    }
 }
 
 module.exports = {
-    getUsedSeparator
+    checkSeparator
 }
