@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/m-alghobary/mini-formater/issues"
   },
-  "homepage": "https://github.com/m-alghobary/mini-formater#readme"
+  "homepage": "https://github.com/m-alghobary/mini-formater#readme",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
 }
