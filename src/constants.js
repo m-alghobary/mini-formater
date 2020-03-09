@@ -34,7 +34,7 @@ const formatTokens = {
     ],
     year: [
         'YY',   // [yy, YY] the date year as two digits
-        'YYYY',   // [yyyy, YYYY] the date year as four digits
+        'YYYY', // [yyyy, YYYY] the date year as four digits
     ]
 };
 

@@ -10,15 +10,44 @@ const { separators, formatTokens } = require('./constants');
  * @returns {Boolean} true if the date format is valid, false otherways
  */
 function checkFormat(dateFormat) {
+    // remove spaces from the begining and the end
+    dateFormat = dateFormat.trim();
 
+    try {
+
+        checkSeparator(dateFormat);
+        const _separator = getSeparator(dateFormat);
+
+        // correct format have three format tokens
+        if (dateFormat.split(_separator).length !== 3)
+            throw new Error('Incorrect format');
+
+        // validate each format token
+        const _userTokens = dateFormat.split(_separator);
+        for (const userToken of _userTokens) {
+            let tokenIndex = -1;
+            for (const tokenGroup in formatTokens) {
+                tokenIndex = formatTokens[tokenGroup].indexOf(userToken.trim().toUpperCase());
+                if (tokenIndex >= 0)
+                    break;
+            }
+
+            if (tokenIndex < 0)
+                throw new Error(`Invalid format token ${userToken}`);
+        }
+
+        return true;
+
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
 }
 
 
 /**
  * check if the used separator is supported or not
  * @param {String} dateFormat the user date format
- * 
- * @returns {Boolean} true if the separator is supported, false otherways
  */
 function checkSeparator(dateFormat) {
 
@@ -43,6 +72,22 @@ function checkSeparator(dateFormat) {
     }
 }
 
+
+/**
+ * get the used separator
+ * @param {String} dateFormat the user date format
+ * 
+ * @returns {String} format separator
+ */
+function getSeparator(dateFormat) {
+    for (const separator of separators) {
+        if (dateFormat.includes(separator))
+            return separator;
+    }
+}
+
+
 module.exports = {
-    checkSeparator
+    checkSeparator,
+    checkFormat
 }
