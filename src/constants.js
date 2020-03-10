@@ -23,23 +23,31 @@ const separators = [' ', '-', '/'];
 // the supported format tokens
 const formatTokens = {
     day: [
-        'D',    // [d, D] the month day as a single digit
-        'DD',   // [dd, DD] the month day as a two digits (ex: 01, 02, ...)
+        'D', // [d, D] the month day as a single digit
+        'DD', // [dd, DD] the month day as a two digits (ex: 01, 02, ...)
     ],
     month: [
-        'M',    // [m, M] the date month as a single digit
-        'MM',   // [mm, MM] the date month as a two digits 
-        'MMM',  // [mmm, MMM] the date month shortcut name
+        'M', // [m, M] the date month as a single digit
+        'MM', // [mm, MM] the date month as a two digits 
+        'MMM', // [mmm, MMM] the date month shortcut name
         'MMMM', // [mmmm, MMMM] the date month full name
     ],
     year: [
-        'YY',   // [yy, YY] the date year as two digits
+        'YY', // [yy, YY] the date year as two digits
         'YYYY', // [yyyy, YYYY] the date year as four digits
     ]
 };
 
+// the tokens regex
+const tokenRegex = {
+    dayRegex: /d+/i,
+    monthRegex: /m+/i,
+    yearRegex: /(y{4}|y{2})/i
+}
+
 module.exports = {
     months,
     separators,
-    formatTokens
+    formatTokens,
+    tokenRegex
 };

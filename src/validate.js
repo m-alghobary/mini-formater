@@ -1,7 +1,7 @@
 /**
  * set of validation functions to validate user params and options
  */
-const { separators, formatTokens } = require('./constants');
+const { separators, formatTokens, tokenRegex } = require('./constants');
 
 /**
  * check if the user date format is valid or not
@@ -113,9 +113,16 @@ function checkArguments(args) {
     }
 }
 
+// validate format tokens
+const isDayToken = token => tokenRegex.dayRegex.test(token);
+const isMonthToken = token => tokenRegex.monthRegex.test(token);
+const isYearToken = token => tokenRegex.yearRegex.test(token);
 
 module.exports = {
     checkSeparator,
     checkFormat,
-    checkArguments
+    checkArguments,
+    isDayToken,
+    isMonthToken,
+    isYearToken
 }
