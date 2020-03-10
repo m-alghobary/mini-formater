@@ -98,7 +98,7 @@ function checkArguments(args) {
             throw new Error('Invalid number of arguments');
 
         // the date argumnet should be of type Date or String
-        if (typeof args[0] !== 'object' || typeof args[0] !== 'string')
+        if (typeof args[0] !== 'object' && typeof args[0] !== 'string')
             throw new Error('date parameter should be of type Date or String');
 
         // the format argument should be a of type string
@@ -120,6 +120,7 @@ const isYearToken = token => tokenRegex.yearRegex.test(token);
 
 module.exports = {
     checkSeparator,
+    getSeparator,
     checkFormat,
     checkArguments,
     isDayToken,

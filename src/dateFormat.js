@@ -2,7 +2,8 @@
  * the definition of the format function
  */
 
-const { checkFormat, checkArguments } = require('./validate');
+const { checkFormat, checkArguments, getSeparator } = require('./validate');
+const DateParts = require('./dateParts');
 
 
 /**
@@ -19,6 +20,17 @@ function format(date, formatStr) {
         return;
 
     date = typeof date === 'object' ? date : new Date(date);
+    const dateParts = new DateParts(date);
+
+    const separator = getSeparator(formatStr);
+    const formatTokens = formatStr.split(separator);
+
+    let result = '';
+    formatTokens.forEach((token) => {
+        result += dateParts.replace(token) + ' ';
+    });
+
+    return result.trim().replace(/ /g, separator);
 }
 
 
