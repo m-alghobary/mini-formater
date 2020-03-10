@@ -86,8 +86,36 @@ function getSeparator(dateFormat) {
     }
 }
 
+/**
+ * validate the format function arguments
+ * @param {Array} args the arguments array
+ */
+function checkArguments(args) {
+    try {
+
+        // the two arguments are required
+        if (args.length !== 2)
+            throw new Error('Invalid number of arguments');
+
+        // the date argumnet should be of type Date or String
+        if (typeof args[0] !== 'object' || typeof args[0] !== 'string')
+            throw new Error('date parameter should be of type Date or String');
+
+        // the format argument should be a of type string
+        if (typeof args[1] !== 'string')
+            throw new Error('formatStr parameter should be of type string');
+
+        return true;
+
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
+}
+
 
 module.exports = {
     checkSeparator,
-    checkFormat
+    checkFormat,
+    checkArguments
 }
