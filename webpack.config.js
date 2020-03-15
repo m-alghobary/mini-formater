@@ -4,7 +4,7 @@ module.exports = {
     mode: 'production',
     entry: './index.js',
     output: {
-        path: path.resolve(__dirname, 'sdn'),
+        path: path.resolve(__dirname, 'cdn'),
         filename: 'mini-formatter.js'
     },
     module: {
