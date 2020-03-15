@@ -12,6 +12,12 @@ using NPM:
 npm install mini-formater
 ```
 
+in browser:
+
+```
+you can download the file: /browser/mini-formatter.js
+```
+
 ---
 
 ## Usage
