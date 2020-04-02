@@ -262,5 +262,3 @@ const miniFormater = function() {
         format
     };
 }();
-
-module.exports = miniFormater;

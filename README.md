@@ -15,12 +15,32 @@ npm install mini-formater
 in browser:
 
 ```
-you can download the file: /browser/mini-formatter.js
+you can use the file: /browser/mini-formatter.min.js
 ```
 
 ---
 
 ## Usage
+
+### Usage in browser
+
+```html
+<!-- index.html -->
+    <script scr="mini-formatter.min.js"></script>
+    <script scr="app.js"></script>
+</body>
+```
+
+```javascript
+// app.js
+
+const date = new Date('12-3-2020');
+const result = miniFormater.format(date, 'mmm dd yyyy');
+
+console.log(result); // Dec 03 2020
+```
+
+### Usage in node
 
 ```javascript
 const format = require('mini-formater');
